@@ -1,2 +1,2 @@
 # SignalAnalysis
-Progetto di ingegneria del Software 2022
+Software Engineering Project 2022
