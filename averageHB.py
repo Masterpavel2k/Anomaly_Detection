@@ -1,4 +1,6 @@
 import numpy as np
+
+from heartBeatsExtraction import get_heart_beats
 from mongoDbHb import get_anorm_collection, get_norm_collection
 import pandas as pd
 import seaborn as sns
@@ -33,10 +35,10 @@ def avg_comparison(col):
     plt.show()
 
 
-def err_print(dbcol, heart_beat, title: str):
+def err_print(col, heart_beat, title: str):
     err_values = np.zeros(1)
     num_of_hb = 10
-    for hb in dbcol.find({'Test': False}).limit(num_of_hb):
+    for hb in col.find({'Test': False}).limit(num_of_hb):
         s = hb['ML2']
         value = np.linalg.norm(heart_beat - s)
         err_values = np.append(err_values, value)
@@ -46,10 +48,7 @@ def err_print(dbcol, heart_beat, title: str):
     print(err_values)
 
 
-if __name__ == '__main__':
+def avg_hb_construction(size: int):
     norm_col = get_norm_collection()
-    average_heart_beat = avg_hb(5000, norm_col)
-
-    err_print(norm_col, average_heart_beat, 'Battito Medio Battiti Normali')
-    anorm_col = get_anorm_collection()
-    err_print(anorm_col, average_heart_beat, 'Battito Medio Battiti Anormali')
+    average_heart_beat = avg_hb(size, norm_col)
+    return average_heart_beat
