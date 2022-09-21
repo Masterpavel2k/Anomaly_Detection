@@ -1,14 +1,24 @@
 import subprocess
+import os
+from databaseNormalPopulation import populate_db_with_norm_hb
+from preProcessNormalEcg import pre_process_normal_ecg
 
-for num in range(0, 36):
-    fout = open('/Users/paoloberto/PycharmProjects/SignalAnalysis/raw_normal/raw_ecg_' + str(num) + '.csv', 'wb')
-    start_time = num * 300
-    end_time = (num + 1) * 300
-    subprocess.run(
-        ['rdsamp', '-r', 'ltstdb/s20011', '-c', '-H', '-f', str(start_time), '-t', str(end_time), '-v', '-ps'],
-        stdout=fout)
 
-# fout = open('samples2.csv', 'wb')
-# subprocess.run(['rdsamp', '-r', 'ltstdb/s20011', '-c', '-H', '-f', '0', '-t', '300', '-v', '-pd'], stdout=fout)
-
-print('Done!')
+def download_norm_ecg(folder_name: str, patient_number: str, col_name: str = 'HeartBeats',
+                      cwd: str = '/Users/paoloberto/PycharmProjects/SignalAnalysis/'):
+    os.chdir(cwd)
+    subprocess.run(['mkdir', folder_name])
+    for num in range(0, 36):
+        f_out = open(cwd + folder_name + '/raw_ecg_' +
+                     str(num) + '.csv', 'wb')
+        start_time = num * 300
+        end_time = (num + 1) * 300
+        subprocess.run(
+            ['rdsamp', '-r', 'ltstdb/' + patient_number, '-c', '-H', '-f', str(start_time), '-t', str(end_time), '-v',
+             '-ps'],
+            stdout=f_out)
+        print(str(num) + ' Done!')
+    print('Download done!')
+    new_folder_name = pre_process_normal_ecg(folder_name, cwd)
+    print('Pre process done!')
+    populate_db_with_norm_hb(new_folder_name, cwd, col_name)

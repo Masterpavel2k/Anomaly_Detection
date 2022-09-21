@@ -1,6 +1,6 @@
 import numpy as np
 
-from mongoDbHb import get_norm_collection, get_anorm_collection
+from mongoDbHb import get_norm_collection, get_anorm_collection, get_client
 
 
 def get_arrays(coll):
@@ -43,3 +43,10 @@ def get_train_test_heart_beats(size: int):
     test_heart_beats = np.vstack((norm_test_heart_beats, anorm_test_heart_beats))
     test_classes = np.append(norm_test_classes, anorm_test_classes)
     return train_heart_beats, train_classes, test_heart_beats, test_classes
+
+
+def get_train_test_from_collection(size: int, col_name: str):
+    db = get_client()
+    col = db[col_name]
+    train_hb, train_cls, test_hb, test_cls = get_heart_beats(col, size)
+    return train_hb, train_cls, test_hb, test_cls

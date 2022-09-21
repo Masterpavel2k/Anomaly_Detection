@@ -6,6 +6,8 @@
       <excludeFolder url="file://$MODULE_DIR$/raw_anormal" />
       <excludeFolder url="file://$MODULE_DIR$/new_normal" />
       <excludeFolder url="file://$MODULE_DIR$/new_anormal" />
+      <excludeFolder url="file://$MODULE_DIR$/nuovo_paziente_processed" />
+      <excludeFolder url="file://$MODULE_DIR$/nuovo_paziente" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.10 (SignalAnalysis)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

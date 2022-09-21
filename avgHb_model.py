@@ -1,6 +1,6 @@
 import numpy as np
 from averageHB import avg_hb_construction
-from distance_model_evaluation import model_evaluation
+from distance_model_evaluation import model_evaluation, model_test, generic_model_evaluation
 
 
 def get_distances(average_hb, heart_beats):
@@ -16,5 +16,5 @@ def get_distances(average_hb, heart_beats):
 if __name__ == '__main__':
     # construction of average heart beat, parameter is the number of heart beats
     avg_hb = avg_hb_construction(4000)
-
+    print('Average hb ready!')
     model_evaluation(avg_hb, get_distances)
