@@ -19,6 +19,9 @@ def model_evaluation(given_model, get_distances):
     print('Finished fitting')
     # get the model specific distances
     test_distances = get_distances(given_model, test_heart_beats)
+    # accuracy metrics
+    accuracy = model.score(test_distances, test_classes)
+    print('Accuracy: ' + str(accuracy))
     # prediction of the model with confusion matrix
     ans = model.predict(test_distances)
     conf_m = confusion_matrix(test_classes, ans)

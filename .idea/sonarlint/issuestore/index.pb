@@ -1,8 +1,6 @@
 
 L
 .scannerwork/report-task.txt,1/f/1feadc761844720d11268cc01b88d72358e54ba6
-6
-pca.py,6/d/6dff32534825672fedd589c7f8f5778eafbfeb0b
 <
 averageHB.py,1/b/1b77b8eb54185308bbfe84c08ed762565035e091
 7
