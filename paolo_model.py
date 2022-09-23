@@ -5,10 +5,14 @@ from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 
+from datasetExperiment import from_csv_to_dataset
 from heartBeatsExtraction import get_train_test_heart_beats
 
 if __name__ == '__main__':
-    train_hb, train_cls, test_hb, test_cls = get_train_test_heart_beats(5000)
+    # train_hb, train_cls, test_hb, test_cls = get_train_test_heart_beats(5000)
+    size = 5000
+    file_name = 'new_prova'
+    train_hb, train_cls, test_hb, test_cls = from_csv_to_dataset(size, file_name)
 
     pipe_lr = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
     print('Start')

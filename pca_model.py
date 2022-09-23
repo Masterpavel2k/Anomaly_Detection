@@ -1,6 +1,6 @@
 import numpy as np
 
-from distance_model_evaluation import model_evaluation
+from distance_model_evaluation import model_evaluation, new_model_evaluation
 from pca import matrix_construction, norm_from_optimal_pca, pca_matrix_construction
 
 
@@ -20,4 +20,5 @@ if __name__ == '__main__':
     # construction of pca matrix from heart beats matrix
     pca_matrix = pca_matrix_construction(s_matrix)
 
-    model_evaluation(pca_matrix, get_distances)
+    # model_evaluation(pca_matrix, get_distances)
+    new_model_evaluation(pca_matrix, get_distances)
