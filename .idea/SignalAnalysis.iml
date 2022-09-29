@@ -2,12 +2,12 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/raw_normal" />
-      <excludeFolder url="file://$MODULE_DIR$/raw_anormal" />
-      <excludeFolder url="file://$MODULE_DIR$/new_normal" />
-      <excludeFolder url="file://$MODULE_DIR$/new_anormal" />
       <excludeFolder url="file://$MODULE_DIR$/nuovo_paziente_processed" />
       <excludeFolder url="file://$MODULE_DIR$/nuovo_paziente" />
+      <excludeFolder url="file://$MODULE_DIR$/Old_Version/new_anormal" />
+      <excludeFolder url="file://$MODULE_DIR$/Old_Version/new_normal" />
+      <excludeFolder url="file://$MODULE_DIR$/Old_Version/raw_anormal" />
+      <excludeFolder url="file://$MODULE_DIR$/Old_Version/raw_normal" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.10 (SignalAnalysis)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
