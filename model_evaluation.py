@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.decomposition import PCA
@@ -6,8 +8,7 @@ from sklearn.model_selection import learning_curve
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-from datasetExperiment import from_csv_to_dataset
-from heartBeatsExtraction import get_train_test_heart_beats
+from datasetExtraction import get_sets
 
 
 def evaluate(pipe_lr, x_train, y_train):
@@ -33,9 +34,11 @@ def evaluate(pipe_lr, x_train, y_train):
 
 
 if __name__ == '__main__':
-    size = 10000
-    file_name = 'new_prova'
-    train_hb, train_cls, test_hb, test_cls = get_train_test_heart_beats(size)
+    cwd = os.getcwd()
+    size = 1000
+    normal_file_name = 'normalHeartBeats.csv'
+    abnormal_file_name = 'abnormalHeartBeats.csv'
+    train_hb, train_cls, test_hb, test_cls = get_sets(size, cwd, normal_file_name, abnormal_file_name)
     pipe_lr = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
 
     evaluate(pipe_lr, train_hb, train_cls)
