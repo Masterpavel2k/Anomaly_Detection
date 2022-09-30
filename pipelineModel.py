@@ -8,9 +8,8 @@ from sklearn.pipeline import make_pipeline
 
 def pipeline_model(train_hb, train_cls, test_hb, test_cls):
     pipe_lr = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
-    print('Start')
     pipe_lr.fit(train_hb, train_cls)
-    print('Finish')
+    print('Best Model')
     accuracy = pipe_lr.score(test_hb, test_cls)
     print('Accuracy: ' + str(accuracy))
 
@@ -22,6 +21,7 @@ def pipeline_model(train_hb, train_cls, test_hb, test_cls):
     pos_prob_ans = prob_ans[:, 1]
     fpr, tpr, thresholds = roc_curve(test_cls, pos_prob_ans)
     roc_auc = auc(fpr, tpr)
+    print('Auc Roc: ' + str(roc_auc))
     # roc curve plotting and display
     display_curve = RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc, estimator_name='Scaler + PCA + Log Reg')
     display_curve.plot()

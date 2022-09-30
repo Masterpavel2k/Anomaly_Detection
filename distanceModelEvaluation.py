@@ -3,13 +3,19 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, roc_curve, auc, RocCurveDisplay
 
 
+def get_log_model(given_model, get_distances, train_hb, train_cls):
+    # get the model specific distances
+    train_distances = get_distances(given_model, train_hb)
+    # training of linear regression model
+    model = LogisticRegression(solver='liblinear', C=10.0, random_state=0).fit(train_distances, train_cls)
+    return model
+
+
 def new_model_evaluation(given_model, get_distances, train_heart_beats, train_classes, test_heart_beats, test_classes):
     # get the model specific distances
     train_distances = get_distances(given_model, train_heart_beats)
     # training of linear regression model
-    print('Starting fitting')
     model = LogisticRegression(solver='liblinear', C=10.0, random_state=0).fit(train_distances, train_classes)
-    print('Finished fitting')
     # get the model specific distances
     test_distances = get_distances(given_model, test_heart_beats)
     # accuracy metrics

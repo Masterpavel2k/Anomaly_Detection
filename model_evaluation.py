@@ -9,6 +9,8 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 from datasetExtraction import get_sets
+from distanceModelEvaluation import get_log_model
+from pcaModel import get_pca_matrix, get_distances
 
 
 def evaluate(pipe_lr, x_train, y_train):
@@ -35,10 +37,10 @@ def evaluate(pipe_lr, x_train, y_train):
 
 if __name__ == '__main__':
     cwd = os.getcwd()
-    size = 1000
+    size = 5000
     normal_file_name = 'normalHeartBeats.csv'
     abnormal_file_name = 'abnormalHeartBeats.csv'
     train_hb, train_cls, test_hb, test_cls = get_sets(size, cwd, normal_file_name, abnormal_file_name)
-    pipe_lr = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
-
+    pca_matrix = get_pca_matrix(train_hb)
+    pipe_lr = get_log_model(pca_matrix, get_distances, train_hb, train_cls)
     evaluate(pipe_lr, train_hb, train_cls)
