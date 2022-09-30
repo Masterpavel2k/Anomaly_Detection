@@ -7,7 +7,6 @@ def needs_preprocess(cwd: str, folder_name: str):
     os.chdir(cwd)
     if not os.path.exists(cwd + folder_name):
         os.mkdir(cwd + folder_name)
-        # subprocess.run(['mkdir', folder_name])
         return True
     elif not os.listdir(cwd + folder_name):
         return True

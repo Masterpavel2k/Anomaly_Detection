@@ -10,8 +10,8 @@ from datasetExperiment import from_csv_to_dataset
 from heartBeatsExtraction import get_train_test_heart_beats
 
 
-def evaluate(pipe_lr, X_train, y_train):
-    train_sizes, train_scores, test_scores = learning_curve(estimator=pipe_lr, X=X_train, y=y_train,
+def evaluate(pipe_lr, x_train, y_train):
+    train_sizes, train_scores, test_scores = learning_curve(estimator=pipe_lr, X=x_train, y=y_train,
                                                             train_sizes=np.linspace(0.1, 1.0, 10),
                                                             cv=100, n_jobs=1)
 
@@ -35,7 +35,6 @@ def evaluate(pipe_lr, X_train, y_train):
 if __name__ == '__main__':
     size = 10000
     file_name = 'new_prova'
-    # train_hb, train_cls, test_hb, test_cls = from_csv_to_dataset(size, file_name)
     train_hb, train_cls, test_hb, test_cls = get_train_test_heart_beats(size)
     pipe_lr = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
 

@@ -8,6 +8,10 @@
       <excludeFolder url="file://$MODULE_DIR$/Old_Version/new_normal" />
       <excludeFolder url="file://$MODULE_DIR$/Old_Version/raw_anormal" />
       <excludeFolder url="file://$MODULE_DIR$/Old_Version/raw_normal" />
+      <excludeFolder url="file://$MODULE_DIR$/abnormal" />
+      <excludeFolder url="file://$MODULE_DIR$/abnormal_processed" />
+      <excludeFolder url="file://$MODULE_DIR$/normal" />
+      <excludeFolder url="file://$MODULE_DIR$/normal_processed" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.10 (SignalAnalysis)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

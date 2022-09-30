@@ -94,20 +94,6 @@ def convert_abnormal_heart_beats_into_csv(cwd: str, folder_name: str, file_name:
     print('Conversion done!')
 
 
-def load_heart_beats_from_csv(file_name: str):
-    # load dataframe
-    dataset = pd.read_csv(file_name)
-    # select train and test samples
-    dataset_train = dataset.loc[dataset['Test'] == 0]
-    dataset_test = dataset.loc[dataset['Test'] == 1]
-    # remove unnecessary column
-    train_array = dataset_train.to_numpy()
-    train_array = np.delete(train_array, 1, 1)
-    test_array = dataset_test.to_numpy()
-    test_array = np.delete(test_array, 1, 1)
-    return train_array, test_array
-
-
 def needs_conversion(cwd: str, file_name: str):
     os.chdir(cwd)
     if not os.path.exists(file_name):
