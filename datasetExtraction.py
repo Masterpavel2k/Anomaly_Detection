@@ -20,6 +20,7 @@ def get_sets(size: int, cwd: str, normal_file_name: str, abnormal_file_name: str
     # get the normal and abnormal train and test datasets
     normal_train_ds, normal_test_ds = load_heart_beats_from_csv(cwd + '/' + normal_file_name)
     abnormal_train_ds, abnormal_test_ds = load_heart_beats_from_csv(cwd + '/' + abnormal_file_name)
+    print(len(normal_train_ds), len(normal_test_ds), len(abnormal_train_ds), len(abnormal_test_ds))
     # division in train / test and heart beats / classes
     train_hb = np.append(normal_train_ds[:size, 1:], abnormal_train_ds[:size, 1:], axis=0)
     train_cls = np.append(normal_train_ds[:size, 0], abnormal_train_ds[:size, 0], axis=0)

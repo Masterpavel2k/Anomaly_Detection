@@ -11,7 +11,8 @@ def get_log_model(given_model, get_distances, train_hb, train_cls):
     return model
 
 
-def new_model_evaluation(given_model, get_distances, train_heart_beats, train_classes, test_heart_beats, test_classes):
+def new_model_evaluation(given_model, model_name: str, get_distances, train_heart_beats, train_classes,
+                         test_heart_beats, test_classes):
     # get the model specific distances
     train_distances = get_distances(given_model, train_heart_beats)
     # training of linear regression model
@@ -31,6 +32,6 @@ def new_model_evaluation(given_model, get_distances, train_heart_beats, train_cl
     fpr, tpr, thresholds = roc_curve(test_classes, pos_prob_ans)
     roc_auc = auc(fpr, tpr)
     # roc curve plotting and display
-    display_curve = RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc, estimator_name='PCA + Log Reg')
+    display_curve = RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc, estimator_name=model_name + ' + Log Reg')
     display_curve.plot()
     plt.show()

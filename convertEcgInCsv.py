@@ -34,11 +34,7 @@ def convert_normal_heart_beats_into_csv(cwd: str, folder_name: str, file_name: s
             for comp in range(150):
                 hb_comp_cont[comp].append(new_s[comp])
             # get random number to select test samples
-            test_num = random()
-            test_bool = 0
-            if test_num > 0.8:
-                test_bool = 1
-            dataset['Test'].append(test_bool)
+            dataset['Test'].append(1 if random() > 0.69 else 0)
     # insert heart beats components into dictionary
     for comp_str, comp_list in zip(comp_str_cont, hb_comp_cont):
         dataset[comp_str] = comp_list
@@ -70,7 +66,7 @@ def convert_abnormal_helper(cwd: str, folder_name: str, dataset: dict, hb_comp_c
                 for comp in range(150):
                     hb_comp_cont[comp].append(new_s[comp])
                 # get random number to select test samples
-                dataset['Test'].append(1 if random() > 0.8 else 0)
+                dataset['Test'].append(1 if random() > 0.69 else 0)
 
 
 def convert_abnormal_heart_beats_into_csv(cwd: str, folder_name: str, file_name: str):
