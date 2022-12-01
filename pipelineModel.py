@@ -4,11 +4,18 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
+from timer import timer
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
+timer.set_level(logging.INFO)
 
 
 def pipeline_model(train_hb, train_cls, test_hb, test_cls):
     pipe_lr = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
-    pipe_lr.fit(train_hb, train_cls)
+    with timer():
+        pipe_lr.fit(train_hb, train_cls)
     print('Best Model')
     accuracy = pipe_lr.score(test_hb, test_cls)
     print('Accuracy: ' + str(accuracy))

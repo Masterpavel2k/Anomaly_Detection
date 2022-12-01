@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, roc_curve, auc, RocCurveDisplay
+from timer import timer
 
 
 def get_log_model(given_model, get_distances, train_hb, train_cls):
@@ -16,7 +17,8 @@ def new_model_evaluation(given_model, model_name: str, get_distances, train_hear
     # get the model specific distances
     train_distances = get_distances(given_model, train_heart_beats)
     # training of linear regression model
-    model = LogisticRegression(solver='liblinear', C=10.0, random_state=0).fit(train_distances, train_classes)
+    with timer(name_or_func='log_reg'):
+        model = LogisticRegression(solver='liblinear', C=10.0, random_state=0).fit(train_distances, train_classes)
     # get the model specific distances
     test_distances = get_distances(given_model, test_heart_beats)
     # accuracy metrics

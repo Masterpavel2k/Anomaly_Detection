@@ -35,9 +35,7 @@ if __name__ == '__main__':
     pipeline_model_select = False
     # selection of models to evaluate
     for arg in args:
-        if arg == 'compare-all':
-            print('Comparison of all methods')
-        elif arg == 'average-heartbeat':
+        if arg == 'average-heartbeat':
             print('Evaluation of average heartbeat method')
             distance_models.append(average_heart_beat(train_hb))
             models_names.append('Average HeartBeat')

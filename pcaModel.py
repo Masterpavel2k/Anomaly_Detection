@@ -1,4 +1,5 @@
 import numpy as np
+from timer import timer
 
 
 def norm_from_optimal_pca(pca_matrix, k, heart_beat):
@@ -8,6 +9,7 @@ def norm_from_optimal_pca(pca_matrix, k, heart_beat):
     return distance
 
 
+@timer
 def get_pca_matrix(train_hb):
     hb_matrix = np.zeros(150)
     for nb in train_hb:
