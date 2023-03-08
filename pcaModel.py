@@ -9,6 +9,13 @@ def norm_from_optimal_pca(pca_matrix, k, heart_beat):
     return distance
 
 
+def reconstructed_heart_beat(pca_matrix, k, heart_beat):
+    uk = pca_matrix[:, :k]
+    u_ut = np.matmul(uk, uk.T)
+    ans = np.matmul(u_ut, heart_beat)
+    return ans
+
+
 @timer
 def get_pca_matrix(train_hb):
     hb_matrix = np.zeros(150)
